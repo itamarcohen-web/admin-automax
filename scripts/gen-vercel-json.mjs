@@ -10,7 +10,7 @@ export function vercelConfig() {
   const toList = (o) => Object.entries(o).map(([key, value]) => ({ key, value }))
   return {
     $schema: 'https://openapi.vercel.sh/vercel.json',
-    framework: 'nextjs',
+    framework: null,   // "Other": the site is a plain static export (out/); the Next.js builder would look for .next/routes-manifest.json
     buildCommand: 'npm run build',
     installCommand: 'npm ci',
     outputDirectory: 'out',

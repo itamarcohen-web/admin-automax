@@ -125,7 +125,7 @@ git push -u origin main
 
 ### פריסה ב‑Vercel
 
-1. vercel.com → **Add New → Project** → Import של ה‑repo. Framework: **Next.js** (מזוהה לבד; `vercel.json` כבר מגדיר Build Command, `npm ci` ו‑Output Directory `out`).
+1. vercel.com → **Add New → Project** → Import של ה‑repo. Framework Preset: **Other** (`vercel.json` מגדיר זאת, יחד עם Build Command, `npm ci` ו‑Output Directory `out`; האתר הוא ייצוא סטטי, לא שרת Next.js).
 2. **Environment Variables** (Production + Preview) – רק שניים:
    * `NEXT_PUBLIC_SUPABASE_URL` = `https://<project-ref>.supabase.co`
    * `NEXT_PUBLIC_SUPABASE_ANON_KEY` = המפתח **הציבורי** `sb_publishable_…`
