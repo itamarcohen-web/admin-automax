@@ -1,0 +1,7 @@
+# Cloudflare Pages. /users/<id> is one pre-built shell page; the browser reads the id from the address bar.
+# Order matters (first match wins): the real static pages come first.
+/users/new     /users/new/index.html   200
+/users/new/    /users/new/index.html   200
+/users/_/      /users/_/index.html     200
+/users/:id     /users/_/index.html     200
+/users/:id/    /users/_/index.html     200

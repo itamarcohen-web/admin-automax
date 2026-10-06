@@ -1,0 +1,58 @@
+{
+  "name": "automax-admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AutoMax Admin console (admin.auto-max.co.il): static Next.js front end + Supabase Edge Function + SQL migrations",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "node scripts/check-env.mjs",
+    "build": "next build && node scripts/postbuild.mjs",
+    "start": "node scripts/serve-out.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:sql": "python tests/sql/test_admin_sql.py",
+    "scan:secrets": "node scripts/scan-secrets.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run scan:secrets",
+    "demo": "node scripts/demo.mjs",
+    "mock": "node tests/e2e/mock-supabase.mjs",
+    "test:all": "npm run check && npm run test:sql",
+    "vercel-json": "node scripts/gen-vercel-json.mjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.2.0",
+    "@radix-ui/react-label": "^2.1.16",
+    "@radix-ui/react-slot": "^1.4.0",
+    "@supabase/supabase-js": "^2.117.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.52.0",
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.8",
+    "jsdom": "^30.1.2",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.3"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.9"
+  }
+}

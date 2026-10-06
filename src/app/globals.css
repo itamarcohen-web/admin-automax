@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* AutoMax tokens: the same dark, monochrome palette as the AutoMax Models app and the website (light theme is the alternative). */
+:root {
+  --background: #f5f6f8;
+  --foreground: #15171b;
+  --card: #ffffff;
+  --card-foreground: #15171b;
+  --muted: #eceef2;
+  --muted-foreground: #5b6270;
+  --border: #e1e4ea;
+  --input: #d3d7df;
+  --primary: #15171b;
+  --primary-foreground: #ffffff;
+  --accent: #eef0f4;
+  --success: #0f7a55;
+  --success-soft: #e0f4ec;
+  --warning: #9a6200;
+  --warning-soft: #fdf1d8;
+  --danger: #c2353c;
+  --danger-soft: #fce6e7;
+  --info: #2457c5;
+  --info-soft: #e5edfc;
+  --ring: #15171b;
+  --radius: 0.75rem;
+}
+.dark {
+  --background: #15171b;
+  --foreground: #f2f3f5;
+  --card: #1b1d22;
+  --card-foreground: #f2f3f5;
+  --muted: #20232a;
+  --muted-foreground: #9ca2ad;
+  --border: #2c2f38;
+  --input: #3a3e49;
+  --primary: #f2f3f5;
+  --primary-foreground: #15171b;
+  --accent: #272b33;
+  --success: #3ecf8e;
+  --success-soft: rgba(62, 207, 142, 0.14);
+  --warning: #e5a83e;
+  --warning-soft: rgba(229, 168, 62, 0.14);
+  --danger: #ef6a70;
+  --danger-soft: rgba(229, 85, 92, 0.16);
+  --info: #7aa2ff;
+  --info-soft: rgba(122, 162, 255, 0.14);
+  --ring: #f2f3f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-sans: 'Assistant', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+}
+
+* { border-color: var(--border); }
+html { color-scheme: dark; }
+html:not(.dark) { color-scheme: light; }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--foreground) 25%, transparent); }
+
+/* Hebrew / mixed text typed by customers: let the browser pick the direction per element. */
+.bidi { unicode-bidi: plaintext; text-align: left; }
+
+@keyframes amx-shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: var(--muted); border-radius: var(--radius-sm); }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 8%, transparent), transparent);
+  animation: amx-shimmer 1.4s infinite;
+}
+@media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } * { scroll-behavior: auto !important; } }

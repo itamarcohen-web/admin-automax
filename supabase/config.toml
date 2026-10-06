@@ -1,0 +1,7 @@
+# Supabase CLI configuration for the admin Edge Function. (Only the function settings matter for deployment.)
+project_id = "automax-admin"
+
+[functions.admin-api]
+# The platform rejects calls without a valid user JWT before our code runs; the function then re-verifies the token,
+# checks public.admin_users, MFA and the role (defence in depth).
+verify_jwt = true
